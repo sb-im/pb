@@ -6,7 +6,7 @@ option go_package = "github.com/SB-IM/pb/signal";
 message SessionDescription {
     int32 type= 1;
     bytes description = 2;
-    bytes id = 3;
+    string id = 3;
     TrackSource track_source = 4;
 }
 

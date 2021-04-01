@@ -4,13 +4,17 @@ package pb;
 option go_package = "github.com/SB-IM/pb/signal";
 
 message SessionDescription {
-    int32 type= 1;
-    bytes description = 2;
-    string id = 3;
-    TrackSource track_source = 4;
+  SDP sdp = 1;
+  string id = 2;
+  TrackSource track_source = 3;
+}
+
+message SDP {
+  int32 type = 1;
+  bytes description = 2;
 }
 
 enum TrackSource {
-    DRONE = 0;
-    MONITOR = 1;
+  DRONE = 0;
+  MONITOR = 1;
 }

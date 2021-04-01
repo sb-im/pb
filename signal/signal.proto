@@ -12,7 +12,7 @@ message SessionDescription {
 // SDP is infact a WebRTC SDP object.
 message SDP {
   string type = 1;
-  bytes sdp = 2;
+  string sdp = 2;
 }
 
 enum TrackSource {

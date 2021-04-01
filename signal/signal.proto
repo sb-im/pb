@@ -10,7 +10,7 @@ message SessionDescription {
 }
 
 message SDP {
-  int32 type = 1;
+  string type = 1;
   bytes description = 2;
 }
 

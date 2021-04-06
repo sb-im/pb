@@ -9,7 +9,21 @@ message SessionDescription {
   TrackSource track_source = 3;
 }
 
-// SDP is infact a WebRTC SDP object.
+// ICECandidate is a translation of webrtc.ICECandidate.
+message ICECandidate {
+  string foundation = 1;
+  uint32 priority = 2;
+  string address = 3;
+  int32 protocol = 4;
+  uint32 port = 5;
+  int32 type = 6;
+  uint32 component = 7;
+  string relatedAddress = 8;
+  uint32 relatedPort = 9;
+  string tcpType = 10;
+}
+
+// SDP is a translation of webrtc.SessionDescription.
 message SDP {
   string type = 1;
   string sdp = 2;

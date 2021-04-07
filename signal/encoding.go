@@ -17,7 +17,7 @@ func EncodeSDP(sdp *webrtc.SessionDescription, meta *Meta) ([]byte, error) {
 
 	msg := SessionDescription{
 		Meta: meta,
-		Sdp:  b,
+		Sdp:  string(b),
 	}
 	return proto.Marshal(&msg)
 }
@@ -31,7 +31,7 @@ func DecodeSDP(payload []byte) (*webrtc.SessionDescription, error) {
 		return nil, err
 	}
 	var sdp *webrtc.SessionDescription
-	if err := json.Unmarshal(msg.Sdp, sdp); err != nil {
+	if err := json.Unmarshal([]byte(msg.Sdp), sdp); err != nil {
 		return nil, err
 	}
 	return sdp, nil
@@ -40,16 +40,16 @@ func DecodeSDP(payload []byte) (*webrtc.SessionDescription, error) {
 // EncodeCandidate encodes webrtc.ICECandidate to protobuf payload.
 func EncodeCandidate(candidate *webrtc.ICECandidate) ([]byte, error) {
 	msg := ICECandidate{
-		Candidate: []byte(candidate.ToJSON().Candidate),
+		Candidate: candidate.ToJSON().Candidate,
 	}
 	return proto.Marshal(&msg)
 }
 
-// DecodeCandidate decodes protobuf payload ICECandidate to bytes form webrtc.ICECandidate.
-func DecodeCandidate(payload []byte) ([]byte, error) {
+// DecodeCandidate decodes protobuf payload ICECandidate to string form webrtc.ICECandidate.
+func DecodeCandidate(payload []byte) (string, error) {
 	var candidate ICECandidate
 	if err := proto.Unmarshal(payload, &candidate); err != nil {
-		return nil, err
+		return "", err
 	}
 	return candidate.Candidate, nil
 }

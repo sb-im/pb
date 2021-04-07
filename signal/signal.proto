@@ -5,11 +5,11 @@ option go_package = "github.com/SB-IM/pb/signal";
 
 message SessionDescription {
   Meta meta = 1; // Metadata to identify actor if any
-  bytes sdp = 2; // JSON encoded webrtc.SessionDescription
+  string sdp = 2; // JSON encoded webrtc.SessionDescription
 }
 
 message ICECandidate {
-  bytes candidate = 1; // JSON encoded webrtc.ICECandidate.
+  string candidate = 1; // JSON encoded webrtc.ICECandidate.
 }
 
 enum SdpType {
@@ -18,7 +18,7 @@ enum SdpType {
 }
 
 message Meta {
-  bytes id = 1; // Unique machine ID for edge device.
+  string id = 1; // Unique machine ID for edge device.
   TrackSource track_source = 2;
 }
 

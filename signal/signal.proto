@@ -10,8 +10,7 @@ message SessionDescription {
 }
 
 message ICECandidate {
-  Meta meta = 1;
-  bytes candidate = 2; // JSON encoded webrtc.ICECandidate.
+  bytes candidate = 1; // JSON encoded webrtc.ICECandidate.
 }
 
 enum SdpType {

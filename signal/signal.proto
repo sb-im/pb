@@ -20,7 +20,7 @@ enum SdpType {
 }
 
 message Meta {
-  string id = 1;
+  bytes id = 1;
   TrackSource track_source = 2;
 }
 

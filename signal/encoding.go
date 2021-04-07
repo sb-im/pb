@@ -15,15 +15,7 @@ func EncodeSDP(sdp *webrtc.SessionDescription, meta *Meta) ([]byte, error) {
 		return nil, err
 	}
 
-	var sdpType SdpType
-	if sdp.Type == webrtc.SDPTypeOffer {
-		sdpType = SdpType_VIDEO_OFFER
-	} else {
-		sdpType = SdpType_VIDEO_ANSWER
-	}
-
 	msg := SessionDescription{
-		Type: sdpType,
 		Meta: meta,
 		Sdp:  b,
 	}

@@ -6,12 +6,12 @@ option go_package = "github.com/SB-IM/pb/signal";
 message SessionDescription {
   SdpType type = 1;
   Meta meta = 2; // Metadata to identify actor if any
-  string sdp = 3; // JSON encoded webrtc.SessionDescription
+  bytes sdp = 3; // JSON encoded webrtc.SessionDescription
 }
 
 message ICECandidate {
   Meta meta = 1;
-  string candidate = 2; // JSON encoded webrtc.ICECandidate.
+  bytes candidate = 2; // JSON encoded webrtc.ICECandidate.
 }
 
 enum SdpType {

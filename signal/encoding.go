@@ -30,11 +30,11 @@ func DecodeSDP(payload []byte) (*webrtc.SessionDescription, error) {
 	if err := proto.Unmarshal(payload, &msg); err != nil {
 		return nil, err
 	}
-	var sdp *webrtc.SessionDescription
-	if err := json.Unmarshal([]byte(msg.Sdp), sdp); err != nil {
-		return nil, err
+	var sdp webrtc.SessionDescription
+	if err := json.Unmarshal([]byte(msg.Sdp), &sdp); err != nil {
+		panic(err)
 	}
-	return sdp, nil
+	return &sdp, nil
 }
 
 // EncodeCandidate encodes webrtc.ICECandidate to protobuf payload.

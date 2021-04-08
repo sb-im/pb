@@ -9,7 +9,8 @@ message SessionDescription {
 }
 
 message ICECandidate {
-  string candidate = 1; // JSON encoded webrtc.ICECandidate.
+  Meta meta = 1; // Metadata to identify actor if any
+  string candidate = 2; // JSON encoded webrtc.ICECandidate.
 }
 
 enum SdpType {

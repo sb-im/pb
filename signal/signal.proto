@@ -19,6 +19,7 @@ message Meta {
 }
 
 enum TrackSource {
-  DRONE = 0;
-  MONITOR = 1;
+  UNKNOWN = 0;
+  DRONE = 1;
+  MONITOR = 2;
 }

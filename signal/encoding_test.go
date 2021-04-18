@@ -1,6 +1,8 @@
 package signal
 
 import (
+	"encoding/json"
+	"fmt"
 	"testing"
 
 	"github.com/pion/webrtc/v3"
@@ -69,4 +71,20 @@ func TestCandidateEncoding(t *testing.T) {
 	if c == "" {
 		t.Fatal("empty candidate")
 	}
+}
+
+func TestTrackSourceEncoding(t *testing.T) {
+	data := struct {
+		Meta *Meta `json:"meta,omitempty"`
+	}{
+		Meta: &Meta{
+			Id:          "abc",
+			TrackSource: TrackSource_DRONE,
+		},
+	}
+	b, err := json.Marshal(&data)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fmt.Printf("%s", b)
 }
